@@ -12,6 +12,7 @@ import { loadFontsFromTailwindSource } from './plugins/loadFontsFromTailwindSour
 import { nextPublicProcessEnv } from './plugins/nextPublicProcessEnv';
 import { restart } from './plugins/restart';
 import { restartEnvFileChange } from './plugins/restartEnvFileChange';
+import { copyApiFolder } from './plugins/copyApiFolder';
 
 export default defineConfig({
   // Keep them available via import.meta.env.NEXT_PUBLIC_*
@@ -65,6 +66,7 @@ export default defineConfig({
     tsconfigPaths(),
     aliases(),
     layoutWrapperPlugin(),
+    copyApiFolder(),
   ],
   resolve: {
     alias: {
