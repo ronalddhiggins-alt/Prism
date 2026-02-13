@@ -30,7 +30,7 @@ export default function RootLayout({
             Original Concept (v1.0) developed with Claude 4.5 Sonnet
           </p>
           <p className="text-[10px] uppercase tracking-wider opacity-50">
-            Open Source Soul • CC BY-NC-SA 4.0
+            Open Source Soul • <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer" className="hover:underline hover:text-gray-900 dark:hover:text-gray-300 transition-colors">CC BY-NC-SA 4.0</a>
           </p>
         </footer>
       </body>
