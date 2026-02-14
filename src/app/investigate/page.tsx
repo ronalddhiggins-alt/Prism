@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { ArrowLeft, Loader2, AlertCircle } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -28,7 +28,7 @@ type PerspectiveData = {
     likely_sources?: { name: string; credibility: number }[];
 };
 
-export default function InvestigatePage() {
+function SearchContent() {
     const searchParams = useSearchParams();
     const topic = searchParams.get("topic");
 
@@ -162,6 +162,19 @@ export default function InvestigatePage() {
 
             </main>
         </div>
+    );
+}
+
+export default function InvestigatePage() {
+    return (
+        <Suspense fallback={
+            <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 text-gray-500">
+                <Loader2 className="w-12 h-12 animate-spin text-blue-600 mb-4" />
+                <p>Initializing Prism...</p>
+            </div>
+        }>
+            <SearchContent />
+        </Suspense>
     );
 }
 
