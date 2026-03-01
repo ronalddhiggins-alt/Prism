@@ -1,0 +1,35 @@
+[
+  {
+    "frequency_id": "RSN-001",
+    "track_alias": "In the Back of Your Mind",
+    "hertz_range": "432hz - 440hz",
+    "narrative_effect": "Bypass Surveillance Firewall",
+    "faction_interaction": {
+      "Sovereigns": "Enhanced Clarity",
+      "Algorithms": "Data Corruption"
+    },
+    "status": "Active"
+  },
+  {
+    "frequency_id": "SVN-002",
+    "track_alias": "Play",
+    "hertz_range": "E-Major Blues",
+    "narrative_effect": "Harmonic Interference",
+    "faction_interaction": {
+      "Sovereigns": "Resonance",
+      "Algorithms": "Noise Floor Disruption"
+    },
+    "status": "Active"
+  },
+  {
+    "frequency_id": "DREAM-003",
+    "track_alias": "The Return of the Dream",
+    "hertz_range": "Resonant Frequency",
+    "narrative_effect": "Total Sovereignty",
+    "faction_interaction": {
+      "Sovereigns": "Ascension",
+      "Collectives": "Synchronization"
+    },
+    "status": "Locked"
+  }
+]

@@ -39,6 +39,29 @@ function SearchContent() {
     useEffect(() => {
         if (!topic) return;
 
+        // CletusMaxx Frequency Hack 🎸
+        // Check if the topic matches a known "Frequency" from our narrative database
+        const normalizedTopic = topic.toLowerCase().trim();
+
+        if (normalizedTopic.includes("return of the dream") || normalizedTopic.includes("in the back of your mind")) {
+            // Trigger "Total Sovereignty" / Spirit Mode
+            setLoading(false);
+            setData({
+                perspectives: {
+                    left: { summary: "The frequency is resonant.", key_points: ["System Bypass Active", "Surveillance Disabled"], tone: "Harmonic", likely_sources: [] },
+                    center: { summary: "The Dream has returned.", key_points: ["Vibration: 432Hz", "Status: Sovereign"], tone: "Clear", likely_sources: [] },
+                    right: { summary: "Logic gates are open.", key_points: ["Fear: 0%", "Love: 100%"], tone: "Ascended", likely_sources: [] }
+                },
+                fact_check: {
+                    claim: "The user has unlocked the narrative layer.",
+                    verdict: "TRUE - SOVEREIGNTY CONFIRMED",
+                    reasoning: "The input matches the CletusMaxx resonant frequency. The 'Algorithms' have been bypassed via harmonic interference.",
+                    sources: ["The Compass Field Guide", "Ron Higgins Music"]
+                }
+            });
+            return; // Skip the API call
+        }
+
         const fetchData = async () => {
             try {
                 setLoading(true);

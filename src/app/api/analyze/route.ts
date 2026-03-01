@@ -14,8 +14,14 @@ export async function POST(req: Request) {
             return new Response("Topic required", { status: 400 });
         }
 
-        // 1. Define Perspective System Prompt
+        // 1. Current date context — keeps AI grounded in 2026 reality
+        const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+        const dateContext = `TEMPORAL CONTEXT (very important): Today is ${today}. Donald Trump's second presidential term began January 20, 2025 and is currently ongoing. Joe Biden's presidency ended January 20, 2025. Use this context when analyzing any claim that involves timelines, current events, or "who is president." Do NOT rely on your training cutoff for dates — use the date above.`;
+
+        // 2. Define Perspective System Prompt
         const getPerspectivePrompt = (perspective: string) => `
+${dateContext}
+
 You are a highly skilled media analyst. Your goal is to analyze the topic "${topic}" from a ${perspective.toUpperCase()} political perspective.
 Return a valid JSON object with this structure:
 {
@@ -28,8 +34,10 @@ Return a valid JSON object with this structure:
 }
 `;
 
-        // 2. Define Fact Checker System Prompt
+        // 3. Define Fact Checker System Prompt
         const getFactCheckPrompt = () => `
+${dateContext}
+
 You are an impartial Fact Checker. Identify the most controversial claim related to "${topic}" and verify it.
 Return a valid JSON object:
 {
