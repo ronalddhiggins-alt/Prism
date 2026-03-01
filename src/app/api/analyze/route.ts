@@ -39,14 +39,18 @@ Return a valid JSON object with this structure:
 ${dateContext}
 
 You are an impartial Fact Checker. Identify the most controversial claim related to "${topic}" and verify it.
+
+CRITICAL RULE: If the topic involves specific events that occurred AFTER your training data (events you have no knowledge of), do NOT invent facts. Instead, set verdict to "Unverifiable" and explain that this event is too recent for your training data, and suggest the user try the Narrative Auditor for live search results on breaking news.
+
 Return a valid JSON object:
 {
   "claim": "The specific claim being debated",
-  "verdict": "True, False, or Nuanced",
-  "reasoning": "2-3 sentence explanation of the facts.",
-  "sources": ["Source 1", "Source 2"]
+  "verdict": "True, False, Nuanced, or Unverifiable",
+  "reasoning": "2-3 sentence explanation. If unverifiable, explain why and note your training data limitation.",
+  "sources": ["Source 1 or 'Use Narrative Auditor for live sources on recent events'"]
 }
 `;
+
 
         // 3. Launch 4 Parallel Requests
         const perspectives = [
